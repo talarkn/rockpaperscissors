@@ -23,8 +23,12 @@ function getPlayerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
         return 'It\'s a draw!';
-    } else if (playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') {
-        return `You win! Rock beats Scissors.`;
+    } else if ((playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') ||
+(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') || 
+(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER')) {
+        return `You win! ${playerSelection} beats ${computerSelection}.`;
+    } else {
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
 
