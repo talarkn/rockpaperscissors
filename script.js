@@ -20,7 +20,16 @@ function getPlayerChoice() {
     }
 }
 
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
+        return 'It\'s a draw!';
+    } else if (playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') {
+        return `You win! Rock beats Scissors.`;
+    }
+}
+
 let computerSelection = getComputerChoice();
 let playerSelection = getPlayerChoice();
 console.log(computerSelection);
 console.log(playerSelection);
+playerSelection === undefined ? null : console.log(playRound(playerSelection, computerSelection));
