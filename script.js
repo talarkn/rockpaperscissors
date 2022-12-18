@@ -25,30 +25,35 @@ function getPlayerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-        return 'It\'s a draw!';
+        console.log('It\'s a draw!');
     } else if ((playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') ||
 (playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') || 
 (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER')) {
         playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
+        console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
     } else {
         computerScore++;
-        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
     }
 }
 
-const computerSelection = getComputerChoice();
-const playerSelection = getPlayerChoice();
-
 function game() {
     for (let counter = 0; counter < 5; counter++) {
-        playerSelection === undefined ? Break : console.log(playRound(getPlayerChoice(), getComputerChoice()));
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice();
+        if (playerSelection) { 
+            playRound(playerSelection, computerSelection); 
+        } else {
+            return "Game is cancelled";
+        }
     }
     if (playerScore > computerScore) {
-        return 'You are a winner!';
+        return 'You are the winner!';
     } else if (computerScore > playerScore) {
         return 'You lose!';
     } else {
         return 'It\'s a draw';
     }
 }
+
+console.log(game());
