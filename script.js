@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     if (computerChoice === 0) {
@@ -26,14 +29,26 @@ function playRound(playerSelection, computerSelection) {
     } else if ((playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') ||
 (playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') || 
 (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER')) {
+        playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     } else {
+        computerScore++;
         return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
 }
 
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice();
-console.log(computerSelection);
-console.log(playerSelection);
-playerSelection === undefined ? null : console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    for (let counter = 0; counter < 5; counter++) {
+        playerSelection === undefined ? Break : console.log(playRound(getPlayerChoice(), getComputerChoice()));
+    }
+    if (playerScore > computerScore) {
+        return 'You are a winner!';
+    } else if (computerScore > playerScore) {
+        return 'You lose!';
+    } else {
+        return 'It\'s a draw';
+    }
+}
