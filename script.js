@@ -28,12 +28,12 @@ function playRound(playerSelection, computerSelection) {
 (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER')) {
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     } else {
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
+const playerSelection = getPlayerChoice();
 console.log(computerSelection);
 console.log(playerSelection);
 playerSelection === undefined ? null : console.log(playRound(playerSelection, computerSelection));
