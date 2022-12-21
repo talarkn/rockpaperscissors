@@ -14,9 +14,10 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let playerChoice = prompt('Let\'s play a game: Rock, Paper or Scissors?', ' ');
+    let capitalisedPlayerChoice = capitaliseWord(playerChoice);
     if (!playerChoice) {
         alert('Game is cancelled.');
-    } else if (playerChoice.toUpperCase() === 'ROCK' || playerChoice.toUpperCase() === 'PAPER' || playerChoice.toUpperCase() === 'SCISSORS') {
+    } else if (capitalisedPlayerChoice === 'Rock' || capitalisedPlayerChoice === 'Paper' || capitalisedPlayerChoice === 'Scissors') {
         return playerChoice;
     } else {
         alert('Invalid input, try again!');
