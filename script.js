@@ -24,21 +24,22 @@ function getPlayerChoice() {
 }
 
 function capitaliseWord(word) {
-    let capitalWord = word[0].toUpperCase() + word[1,-1];
+    let capitalWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
     return capitalWord;
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
+    let playerSelectionCapitalised = capitaliseWord(playerSelection);
+    if (playerSelectionCapitalised === computerSelection) {
         console.log('It\'s a draw!');
-    } else if ((playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS') ||
-(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') || 
-(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER')) {
+    } else if ((playerSelectionCapitalised === 'Rock' && computerSelection === 'Scissors') ||
+(playerSelectionCapitalised === 'Paper' && computerSelection === 'Rock') || 
+(playerSelectionCapitalised === 'Scissors' && computerSelection === 'Paper')) {
         playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+        console.log(`You win! ${playerSelectionCapitalised} beats ${computerSelection}.`);
     } else {
         computerScore++;
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+        console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalised}.`);
     }
 }
 
