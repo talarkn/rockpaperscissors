@@ -13,7 +13,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    let playerChoice = prompt('Let\'s play a game: Rock, Paper or Scissors?');
+    let playerChoice = prompt('Let\'s play a game: Rock, Paper or Scissors?', ' ');
     if (!playerChoice) {
         alert('Game is cancelled.');
     } else if (playerChoice.toUpperCase() === 'ROCK' || playerChoice.toUpperCase() === 'PAPER' || playerChoice.toUpperCase() === 'SCISSORS') {
@@ -43,9 +43,7 @@ function game() {
         let playerSelection = getPlayerChoice();
         if (playerSelection) { 
             playRound(playerSelection, computerSelection); 
-        } else {
-            return "Game is cancelled";
-        }
+        } 
     }
     if (playerScore > computerScore) {
         return 'You are the winner!';
