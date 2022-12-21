@@ -23,6 +23,11 @@ function getPlayerChoice() {
     }
 }
 
+function capitaliseWord(word) {
+    let capitalWord = word[0].toUpperCase() + word[1,-1];
+    return capitalWord;
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
         console.log('It\'s a draw!');
@@ -43,7 +48,9 @@ function game() {
         let playerSelection = getPlayerChoice();
         if (playerSelection) { 
             playRound(playerSelection, computerSelection); 
-        } 
+        } else {
+            return 'Game is cancelled!'
+        }
     }
     if (playerScore > computerScore) {
         return 'You are the winner!';
