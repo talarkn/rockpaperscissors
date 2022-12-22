@@ -14,13 +14,13 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let playerChoice = prompt('Let\'s play a game: Rock, Paper or Scissors?', ' ');
-    let capitalisedPlayerChoice = capitaliseWord(playerChoice);
-    if (!playerChoice) {
+    if (playerChoice === null) {
         alert('Game is cancelled.');
-    } else if (capitalisedPlayerChoice === 'Rock' || capitalisedPlayerChoice === 'Paper' || capitalisedPlayerChoice === 'Scissors') {
+    } else if (playerChoice.toUpperCase() === 'ROCK' || playerChoice.toUpperCase() === 'PAPER' || playerChoice.toUpperCase() === 'SCISSORS') {
         return playerChoice;
     } else {
         alert('Invalid input, try again!');
+        return ' ';
     }
 }
 
@@ -31,7 +31,9 @@ function capitaliseWord(word) {
 
 function playRound(playerSelection, computerSelection) {
     let playerSelectionCapitalised = capitaliseWord(playerSelection);
-    if (playerSelectionCapitalised === computerSelection) {
+    if (playerSelectionCapitalised === ' ') {
+        return null;
+    } else if (playerSelectionCapitalised === computerSelection) {
         console.log('It\'s a draw!');
     } else if ((playerSelectionCapitalised === 'Rock' && computerSelection === 'Scissors') ||
 (playerSelectionCapitalised === 'Paper' && computerSelection === 'Rock') || 
@@ -50,7 +52,9 @@ function game() {
         let playerSelection = getPlayerChoice();
         if (playerSelection) { 
             playRound(playerSelection, computerSelection); 
-        } else {
+        } else if (playerSelection === ' ') {
+            counter--;
+        } else {    
             return 'Game is cancelled!'
         }
     }
