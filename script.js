@@ -60,11 +60,11 @@ function game() {
         }
     }
     if (playerScore > computerScore) {
-        return 'You are the winner!';
+        return 'You win! The odds were in your favour!';
     } else if (computerScore > playerScore) {
-        return 'You lose!';
+        return 'The computer wins! Better luck next time.';
     } else {
-        return 'It\'s a draw';
+        return 'It\'s a draw. Not bad!';
     }
 }
 
