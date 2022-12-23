@@ -52,8 +52,9 @@ function game() {
         let playerSelection = getPlayerChoice();
         if (playerSelection) { 
             playRound(playerSelection, computerSelection); 
-        } else if (playerSelection === ' ') {
-            counter--;
+            if (playerSelection === ' ') {
+                counter--;
+            }
         } else {    
             return 'Game is cancelled!'
         }
