@@ -26,6 +26,7 @@ function getPlayerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     const result = document.querySelector('.result');
+    const score = document.querySelector('.score');
     if (playerSelection === ' ') {
         return null;
     } else if (playerSelection === computerSelection) {
@@ -39,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         result.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
-
+    score.textContent = `You: ${playerScore} vs Computer: ${computerScore}`; 
 }
 
 const buttons = document.querySelectorAll('button');
