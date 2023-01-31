@@ -24,48 +24,68 @@ function getPlayerChoice() {
     }
 }
 
-function capitaliseWord(word) {
-    let capitalWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
-    return capitalWord;
-}
+// function capitaliseWord(word) {
+//     let capitalWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
+//     return capitalWord;
+// }
+
+// function playRound(playerSelection, computerSelection) {
+//     let playerSelectionCapitalised = capitaliseWord(playerSelection);
+//     if (playerSelectionCapitalised === ' ') {
+//         return null;
+//     } else if (playerSelectionCapitalised === computerSelection) {
+//         console.log('It\'s a draw!');
+//     } else if ((playerSelectionCapitalised === 'Rock' && computerSelection === 'Scissors') ||
+// (playerSelectionCapitalised === 'Paper' && computerSelection === 'Rock') || 
+// (playerSelectionCapitalised === 'Scissors' && computerSelection === 'Paper')) {
+//         playerScore++;
+//         console.log(`You win! ${playerSelectionCapitalised} beats ${computerSelection}.`);
+//     } else {
+//         computerScore++;
+//         console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalised}.`);
+//     }
+// }
 
 function playRound(playerSelection, computerSelection) {
-    let playerSelectionCapitalised = capitaliseWord(playerSelection);
-    if (playerSelectionCapitalised === ' ') {
+    if (playerSelection === ' ') {
         return null;
-    } else if (playerSelectionCapitalised === computerSelection) {
+    } else if (playerSelection === computerSelection) {
         console.log('It\'s a draw!');
-    } else if ((playerSelectionCapitalised === 'Rock' && computerSelection === 'Scissors') ||
-(playerSelectionCapitalised === 'Paper' && computerSelection === 'Rock') || 
-(playerSelectionCapitalised === 'Scissors' && computerSelection === 'Paper')) {
+    } else if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+(playerSelection === 'Paper' && computerSelection === 'Rock') || 
+(playerSelection === 'Scissors' && computerSelection === 'Paper')) {
         playerScore++;
-        console.log(`You win! ${playerSelectionCapitalised} beats ${computerSelection}.`);
+        console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
     } else {
         computerScore++;
-        console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalised}.`);
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
     }
+
 }
 
-function game() {
-    for (let counter = 0; counter < 5; counter++) {
-        let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerChoice();
-        if (playerSelection) { 
-            playRound(playerSelection, computerSelection); 
-            if (playerSelection === ' ') {
-                counter--;
-            }
-        } else {    
-            return 'Game is cancelled!'
-        }
-    }
-    if (playerScore > computerScore) {
-        return 'You win! The odds were in your favour!';
-    } else if (computerScore > playerScore) {
-        return 'The computer wins! Better luck next time.';
-    } else {
-        return 'It\'s a draw. Not bad!';
-    }
-}
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => playRound(button.value, getComputerChoice())));
 
-console.log(game());
+// function game() {
+//     for (let counter = 0; counter < 5; counter++) {
+//         let computerSelection = getComputerChoice();
+//         let playerSelection = getPlayerChoice();
+//         if (playerSelection) { 
+//             playRound(playerSelection, computerSelection); 
+//             if (playerSelection === ' ') {
+//                 counter--;
+//             }
+//         } else {    
+//             return 'Game is cancelled!'
+//         }
+//     }
+//     if (playerScore > computerScore) {
+//         return 'You win! The odds were in your favour!';
+//     } else if (computerScore > playerScore) {
+//         return 'The computer wins! Better luck next time.';
+//     } else {
+//         return 'It\'s a draw. Not bad!';
+//     }
+// }
+
+// console.log(game());
