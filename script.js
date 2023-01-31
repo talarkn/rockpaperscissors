@@ -46,19 +46,21 @@ function getPlayerChoice() {
 //     }
 // }
 
+
 function playRound(playerSelection, computerSelection) {
+    const result = document.querySelector('.result');
     if (playerSelection === ' ') {
         return null;
     } else if (playerSelection === computerSelection) {
-        console.log('It\'s a draw!');
+        result.textContent = 'It\'s a draw!';
     } else if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
 (playerSelection === 'Paper' && computerSelection === 'Rock') || 
 (playerSelection === 'Scissors' && computerSelection === 'Paper')) {
         playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+        result.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
     } else {
         computerScore++;
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+        result.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
 
 }
