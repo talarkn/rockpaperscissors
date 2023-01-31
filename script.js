@@ -24,29 +24,6 @@ function getPlayerChoice() {
     }
 }
 
-// function capitaliseWord(word) {
-//     let capitalWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
-//     return capitalWord;
-// }
-
-// function playRound(playerSelection, computerSelection) {
-//     let playerSelectionCapitalised = capitaliseWord(playerSelection);
-//     if (playerSelectionCapitalised === ' ') {
-//         return null;
-//     } else if (playerSelectionCapitalised === computerSelection) {
-//         console.log('It\'s a draw!');
-//     } else if ((playerSelectionCapitalised === 'Rock' && computerSelection === 'Scissors') ||
-// (playerSelectionCapitalised === 'Paper' && computerSelection === 'Rock') || 
-// (playerSelectionCapitalised === 'Scissors' && computerSelection === 'Paper')) {
-//         playerScore++;
-//         console.log(`You win! ${playerSelectionCapitalised} beats ${computerSelection}.`);
-//     } else {
-//         computerScore++;
-//         console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalised}.`);
-//     }
-// }
-
-
 function playRound(playerSelection, computerSelection) {
     const result = document.querySelector('.result');
     if (playerSelection === ' ') {
