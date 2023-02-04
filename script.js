@@ -1,7 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.rps');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
 const final = document.querySelector('.final');
@@ -44,4 +44,9 @@ function playRound(playerSelection, computerSelection) {
     score.textContent = `You: ${playerScore} vs Computer: ${computerScore}`;
 }
 
-// create a restart button to reset the scores
+
+
+function restart() {
+    playerScore = 0;
+    computerScore = 0;
+}
