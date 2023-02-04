@@ -1,6 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll('button');
+const result = document.querySelector('.result');
+const score = document.querySelector('.score');
+const final = document.querySelector('.final');
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     if (computerChoice === 0) {
@@ -12,21 +17,17 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    let playerChoice = prompt('Let\'s play a game: Rock, Paper or Scissors?', ' ');
-    if (playerChoice === null) {
-        alert('Game is cancelled.');
-    } else if (playerChoice.toUpperCase() === 'ROCK' || playerChoice.toUpperCase() === 'PAPER' || playerChoice.toUpperCase() === 'SCISSORS') {
-        return playerChoice;
-    } else {
-        alert('Invalid input, try again!');
-        return ' ';
-    }
-}
+buttons.forEach(button => button.addEventListener('click', () => playRound(button.value, getComputerChoice())));
 
 function playRound(playerSelection, computerSelection) {
-    const result = document.querySelector('.result');
-    const score = document.querySelector('.score');
+    if (playerScore > 4) {
+        final.textContent = 'You win! The odds were in your favour!';
+        return;
+    } else if (computerScore > 4)  { 
+        final.textContent = 'The computer wins! Better luck next time.';
+        return;
+    }
+
     if (playerSelection === ' ') {
         return null;
     } else if (playerSelection === computerSelection) {
@@ -39,33 +40,8 @@ function playRound(playerSelection, computerSelection) {
     } else {
         computerScore++;
         result.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
-    }
-    score.textContent = `You: ${playerScore} vs Computer: ${computerScore}`; 
+    }   
+    score.textContent = `You: ${playerScore} vs Computer: ${computerScore}`;
 }
 
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', () => playRound(button.value, getComputerChoice())));
-
-// function game() {
-//     for (let counter = 0; counter < 5; counter++) {
-//         let computerSelection = getComputerChoice();
-//         let playerSelection = getPlayerChoice();
-//         if (playerSelection) { 
-//             playRound(playerSelection, computerSelection); 
-//             if (playerSelection === ' ') {
-//                 counter--;
-//             }
-//         } else {    
-//             return 'Game is cancelled!'
-//         }
-//     }
-//     if (playerScore > computerScore) {
-//         return 'You win! The odds were in your favour!';
-//     } else if (computerScore > playerScore) {
-//         return 'The computer wins! Better luck next time.';
-//     } else {
-//         return 'It\'s a draw. Not bad!';
-//     }
-// }
-
-// console.log(game());
+// create a restart button to reset the scores
