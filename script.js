@@ -44,9 +44,13 @@ function playRound(playerSelection, computerSelection) {
     score.textContent = `You: ${playerScore} vs Computer: ${computerScore}`;
 }
 
-
+const restartBtn = document.querySelector('.restart');
+restartBtn.addEventListener('click', restart); 
 
 function restart() {
     playerScore = 0;
     computerScore = 0;
+    result.textContent = '';
+    score.textContent = '';
+    final.textContent = '';
 }
